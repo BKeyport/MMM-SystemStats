@@ -59,7 +59,8 @@ Module.register('MMM-SystemStats', {
     //Log.log('MMM-SystemStats: socketNotificationReceived ' + notification);
     //Log.log(payload);
     if (notification === 'STATS') {
-      this.stats.cpuTemp = payload.cpuTemp;
+      this.stats.cpuTemp = payload.cpuTemp + " / " + (parseFloat(payload.cpuTemp) * 9 / 5 + 32).toFixed(1) + "°F";
+      //this.stats.cpuTemp = payload.cpuTemp;
       //console.log("this.config.useSyslog-" + this.config.useSyslog + ', this.stats.cpuTemp-'+parseInt(this.stats.cpuTemp)+', this.config.thresholdCPUTemp-'+this.config.thresholdCPUTemp);
       if (this.config.useSyslog) {
         var cpuTemp = Math.ceil(parseFloat(this.stats.cpuTemp));
